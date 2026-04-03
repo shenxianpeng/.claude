@@ -3,3 +3,10 @@ settings.local.json
 
 # Personal CLAUDE.md overrides — never commit this file
 CLAUDE.local.md
+
+# Claude Code session state (auto-generated)
+.claude_session
+*.claude_session
+
+# Temporary files created by Claude during sessions
+/tmp/

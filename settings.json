@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "Bash(python *)",
+      "Bash(python3 *)",
       "Bash(pip install *)",
       "Bash(pip install -r *)",
       "Bash(pytest *)",
@@ -10,10 +11,43 @@
       "Bash(ruff format *)",
       "Bash(black *)",
       "Bash(flake8 *)",
-      "Bash(mypy *)"
+      "Bash(mypy *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git status)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ],
     "deny": [
       "Bash(rm -rf *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/prevent_rm_rf.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/format_python.py"
+          },
+          {
+            "type": "command",
+            "command": "python3 .claude/hooks/lint_python.py"
+          }
+        ]
+      }
     ]
   }
 }
