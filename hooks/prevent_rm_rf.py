@@ -23,15 +23,16 @@ import re
 import sys
 
 # Patterns that should never be executed.
+RM_RECURSIVE_FLAGS = r"(?:-(?:rf?|fr)|-r\s+-f|-f\s+-r)"
 BLOCKED_PATTERNS = [
-    r"rm\s+-rf?\s+/(?!\w)",   # rm -rf / or rm -r /
-    r"rm\s+-rf?\s+~",          # rm -rf ~ (home directory)
-    r"rm\s+-rf?\s+\$HOME",     # rm -rf $HOME
-    r"rm\s+-rf?\s+\.(?:/)?(?=\s|$)",  # rm -rf . or rm -rf ./ only
-    r":\s*\(\)\s*\{.*\}",      # fork-bomb pattern :(){:|:&};:
+    rf"rm\s+{RM_RECURSIVE_FLAGS}\s+/(?!\w)",   # rm -rf / or equivalent recursive/force forms
+    rf"rm\s+{RM_RECURSIVE_FLAGS}\s+~",         # rm -rf ~ (home directory)
+    rf"rm\s+{RM_RECURSIVE_FLAGS}\s+\$HOME",    # rm -rf $HOME
+    rf"rm\s+{RM_RECURSIVE_FLAGS}\s+\.",        # rm -rf . (current directory root)
+    r":\s*\(\)\s*\{.*\}",                      # fork-bomb pattern :(){:|:&};:
 ]
 
-COMPILED = [re.compile(p) for p in BLOCKED_PATTERNS]
+COMPILED = [re.compile(p, re.IGNORECASE) for p in BLOCKED_PATTERNS]
 
 
 def main() -> None:
