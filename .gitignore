@@ -1,0 +1,5 @@
+# Local settings override — never commit this file
+settings.local.json
+
+# Personal CLAUDE.md overrides — never commit this file
+CLAUDE.local.md
