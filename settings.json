@@ -1,6 +1,19 @@
 {
   "permissions": {
-    "allow": [],
-    "deny": []
+    "allow": [
+      "Bash(python *)",
+      "Bash(pip install *)",
+      "Bash(pip install -r *)",
+      "Bash(pytest *)",
+      "Bash(pytest)",
+      "Bash(ruff check *)",
+      "Bash(ruff format *)",
+      "Bash(black *)",
+      "Bash(flake8 *)",
+      "Bash(mypy *)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)"
+    ]
   }
 }

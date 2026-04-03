@@ -7,41 +7,49 @@
 ## Tech Stack
 
 <!-- List the main technologies, frameworks, and languages used. -->
+- Language: Python 3
+- Testing: pytest
+- Linting: ruff / flake8
+- Formatting: black
+- Dependency management: pip / pip-tools
 
 ## Development Setup
 
 ```bash
 # Install dependencies
-# e.g. npm install / pip install -r requirements.txt
+pip install -r requirements.txt
 
 # Run the application
-# e.g. npm run dev
+python -m <module_name>     # replace <module_name> with your package, e.g. python -m myapp
 
 # Run tests
-# e.g. npm test
+pytest
+
+# Run tests with coverage
+pytest --cov
 ```
 
 ## Common Commands
 
-| Task  | Command           |
-|-------|-------------------|
-| Build | `npm run build`   |
-| Test  | `npm test`        |
-| Lint  | `npm run lint`    |
-| Format| `npm run format`  |
+| Task   | Command                        |
+|--------|--------------------------------|
+| Test   | `pytest`                       |
+| Lint   | `ruff check .` / `flake8 .`    |
+| Format | `black .`                      |
+| Type   | `mypy .`                       |
 
 ## Code Style & Conventions
 
-- <!-- e.g. Use named exports only, no default exports -->
-- <!-- e.g. Co-locate test files next to source files -->
-- <!-- e.g. Use functional components in React -->
+- Follow PEP 8 style guidelines
+- Use type hints for all public functions and methods
+- Co-locate test files under `tests/` using the `test_<module>.py` naming convention
 - <!-- e.g. API responses follow `{ data, error }` shape -->
 
 ## Repository Structure
 
 ```
 src/           # Application source code
-tests/         # Test files
+tests/         # Test files (test_*.py)
 docs/          # Documentation
 .claude/       # Claude Code configuration
 ```

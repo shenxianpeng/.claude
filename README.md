@@ -49,8 +49,12 @@ and shell commands Claude is permitted to use:
 {
   "permissions": {
     "allow": [
-      "Bash(npm run build)",
-      "Bash(npm test)"
+      "Bash(python *)",
+      "Bash(pip install *)",
+      "Bash(pytest *)",
+      "Bash(pytest)",
+      "Bash(ruff check *)",
+      "Bash(black *)"
     ],
     "deny": [
       "Bash(rm -rf *)"
