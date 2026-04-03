@@ -27,7 +27,7 @@ BLOCKED_PATTERNS = [
     r"rm\s+-rf?\s+/(?!\w)",   # rm -rf / or rm -r /
     r"rm\s+-rf?\s+~",          # rm -rf ~ (home directory)
     r"rm\s+-rf?\s+\$HOME",     # rm -rf $HOME
-    r"rm\s+-rf?\s+\.",         # rm -rf . (current directory root)
+    r"rm\s+-rf?\s+\.(?:/)?(?=\s|$)",  # rm -rf . or rm -rf ./ only
     r":\s*\(\)\s*\{.*\}",      # fork-bomb pattern :(){:|:&};:
 ]
 
